@@ -1,11 +1,12 @@
-export default function WeatherCard({ day, temp, icon }) {
+export default function WeatherCard({ day, temp, icon, onClick }) {
     return (
-        <div className="weather-card">
-            <h3 style={{ fontSize: "2rem" }}>{day}</h3>
-            <img src={`1https:${icon}`}
+        <div className="weather-card" onClick={onClick}>
+            <h3>{day}</h3>
+            <img src={`https:${icon}`}
                 alt="weather icon"
-                style={{ width: "8rem", height: "4rem" }} />
-            <p style={{ fontSize: "1.6rem" }}>{temp}°C</p>
+                style={{width:"50px", height: "50px"}}
+                />
+            <p>{temp}°C</p>
         </div>
     );
 }

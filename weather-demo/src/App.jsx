@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import WelcomeScreen from "./WelcomeScreen";
 import UserForm from "./UserForm";
 import WeatherDashboard from "./WeatherDashboard";
@@ -10,17 +10,16 @@ export default function App() {
 
     return (
         <>
-        {page ==="welcome" && <WelcomeScreen onContinue={() =>setPage("form")} />}
-
+            {page === "welcome" && <WelcomeScreen onContinue={() => setPage("form")} />}
             {page === "form" && (
-                <UserForm onSubmit ={(data) => {
+                <UserForm onSubmit={(data) => {
                     setUserData(data);
                     setPage("dashboard");
                 }}
                 />
             )}
-            {page === "dashboard" && <WeatherDashboard user = {userData} />}
-        
+            {page === "dashboard" && <WeatherDashboard user={userData} />}
+
         </>
     );
 }

@@ -1,46 +1,48 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import HourlyForecast from "./HourlyForecast";
-import SearchBar from "./SearchBar";
-import {fetchWeather} from "./api/weather";
+import { fetchWeather } from "./api/weather";
 
 export default function WeatherDashboard({ user }) {
-    const[weekly, setWeekly] = useState([]);
-    const[hourly, setHourly] = useState([]);
-    const[loading, setLoading] = useState(true);
+    const [weekly, setWeekly] = useState([]);
+    const [selectedDay, setSelectedDay] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const loadWeather = async (location) => {
         setLoading(true);
         const data = await fetchWeather(location);
-        setWeekly(data.weekly);
-        setHourly(data.hourly);
+        const weeklyData = data.weekly.map((day, i) => ({
+            ...day,
+            hourly: data.hourly[i] ? data.hourly[i] : [],
+        }));
+        setWeekly(weeklyData);
+        // setHourly(data.hourly);
         setLoading(false);
     };
 
-    useEffect(() =>{
-        loadWeather(user.location);
-    }, [user.location]);
+    useEffect(() => {
+        if (user?.location) loadWeather(user.location);
+    }, [user?.location]);
+
+    if (!user) return null;
 
     return (
-        <div className ="dashboard-container">
-            <h2 style ={{fontSize: "2.8rem"}}>Welcome, {user.name}</h2>
-            <p style ={{fontSize: "1.6rem"}}>Here's your weekly forecast for {user.location}</p>
+        <div className="dashboard-container">
+            <h2 style={{ fontSize: "2.8rem" }}>Welcome, {user.name}</h2>
+            <p style={{ fontSize: "1.6rem" }}>Here's your weekly forecast for {user.location}</p>
 
-            <SearchBar onSearch={loadWeather} />
 
             {loading ? (
-                <p style = {{ fontSize: "1.8rem"}}>Loading weather...</p>
+                <p style={{ fontSize: "1.8rem" }}>Loading weather...</p>
+            ) : selectedDay ? (
+                <HourlyForecast data={selectedDay.hourly} onBack={() => setSelectedDay(null)} />
             ) : (
-                <>
                 <div className="weather-cards">
-                    {weekly.map((x,i) =>(
-                        <WeatherCard key = {i} day={x.day} temp={x.temp} icon={x.icon} />
+                    {weekly.map((day, i) => (
+                        <WeatherCard key={i} day={day.day} temp={day.temp} icon={day.icon} onClick={() => setSelectedDay(day)} />
                     ))}
                 </div>
 
-                <h3 stlye ={{fontsize: "2rem" }}>Hourly Forecast</h3>
-                <HourlyForecast data={hourly} />
-                </>
             )}
         </div>
     );

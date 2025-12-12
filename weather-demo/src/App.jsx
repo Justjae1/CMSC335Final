@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import WelcomeScreen from "./src/WelcomeScreen";
-import UserForm from "./src/UserForm";
-import WeatherDashboard from "./src/WeatherDashboard";
+import WelcomeScreen from "./WelcomeScreen";
+import UserForm from "./UserForm";
+import WeatherDashboard from "./WeatherDashboard";
 import "./App.css";
 
 export default function App() {
     const [page, setPage] = useState("welcome");
-    const [userDate, setUserData] = useState(null);
+    const [userData, setUserData] = useState(null);
 
     return (
         <>

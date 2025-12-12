@@ -8,8 +8,8 @@ export default function SearchBar({onSearch}){
                 width: "60%",
                 padding: "1.4rem",
                 borderRadius: "1rem",
-                border: ".1rewm solid #444",
-                fontsize: "1.6rem"
+                border: ".1rem solid #444",
+                fontsize: "1.6rem",
             }}
 
             placeholder="Change the sceneary?" 
@@ -18,8 +18,7 @@ export default function SearchBar({onSearch}){
             <button className="btn" style={{
                 marginLeft: "1rem", width: "20%"}}
                 onClick={() => onSearch(text)}
-            > 
-            </button>
+            >Search</button>
         </div>
     )
 }

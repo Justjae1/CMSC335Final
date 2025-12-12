@@ -1,6 +1,6 @@
 export default function HourlyForecast({ data }) {
     return (
-        <div className="hourly-container">
+        <div className="hourly-forecast">
             {data.map((x, i) => (
                 <div className="hour-block" key={i}>
                     <div style={{ fontSize: "1.4rem" }}>{x.time}</div>

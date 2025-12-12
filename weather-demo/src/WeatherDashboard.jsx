@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import WeatherCard from "./src/WeatherCard";
-import HourlyForecast from "./src/HourlyForecast";
-import SearchBar from "./src/SearchBar";
+import WeatherCard from "./WeatherCard";
+import HourlyForecast from "./HourlyForecast";
+import SearchBar from "./SearchBar";
 import {fetchWeather} from "./api/weather";
 
 export default function WeatherDashboard({ user }) {
@@ -19,7 +19,7 @@ export default function WeatherDashboard({ user }) {
 
     useEffect(() =>{
         loadWeather(user.location);
-    }, []);
+    }, [user.location]);
 
     return (
         <div className ="dashboard-container">

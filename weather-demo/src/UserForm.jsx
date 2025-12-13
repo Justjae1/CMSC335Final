@@ -9,7 +9,11 @@ export default function UserForm({ onSubmit }) {
 
         e.preventDefault();
 
-        if (!name || !age || !location) return;
+        if (!name || !age || !location){
+            window.alert("Please fill the form completely to continue.");
+            return;
+        }
+
         onSubmit({
             name, age, location: location.charAt(0).toUpperCase() + location.slice(1),
 

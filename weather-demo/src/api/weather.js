@@ -15,10 +15,12 @@ export const fetchWeather = async (location) => {
       }
     });
 
+    const country = response.data.location.country; 
 
     const weeklyData = response.data.forecast.forecastday.map((day) => ({
       day: day.date,
-      temp: day.day.avgtemp_c,
+      temp_c: day.day.avgtemp_c,
+      temp_f: day.day.avgtemp_f,
       icon: day.day.condition.icon,
 
     }));
@@ -33,6 +35,7 @@ export const fetchWeather = async (location) => {
 
 
     return {
+      country: country, 
       weekly: weeklyData,
       hourly: hourlyData
     };

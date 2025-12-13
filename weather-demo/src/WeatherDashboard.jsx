@@ -7,6 +7,7 @@ export default function WeatherDashboard({ user }) {
     const [weekly, setWeekly] = useState([]);
     const [selectedDay, setSelectedDay] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [country, setCountry] = useState("");
 
     const loadWeather = async (location) => {
         setLoading(true);
@@ -15,6 +16,7 @@ export default function WeatherDashboard({ user }) {
             ...day,
             hourly: data.hourly[i] ? data.hourly[i] : [],
         }));
+        setCountry(data.country);
         setWeekly(weeklyData);
         // setHourly(data.hourly);
         setLoading(false);
@@ -39,7 +41,7 @@ export default function WeatherDashboard({ user }) {
             ) : (
                 <div className="weather-cards">
                     {weekly.map((day, i) => (
-                        <WeatherCard key={i} day={day.day} temp={day.temp} icon={day.icon} onClick={() => setSelectedDay(day)} />
+                        <WeatherCard key={i} day={day.day} tempC={day.temp_c} tempF={day.temp_f} country={country} icon={day.icon} onClick={() => setSelectedDay(day)} />
                     ))}
                 </div>
 

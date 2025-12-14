@@ -6,8 +6,8 @@ const BASE_URL = process.env.REACT_APP_WEATHER_API_BASE_URL;
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 router.get('/:city', async (req, res) => {
+  const city = req.params.city;
   try {
-    const city = req.params.city;
     const response = await axios.get(`${BASE_URL}/forecast.json`, {
       params: { key: API_KEY, q: city, days: 7, aqi: 'no', alerts: 'no' }
     });
@@ -37,7 +37,7 @@ router.get('/:city', async (req, res) => {
     });
   } catch (err) {
     res.status(400).json({ 
-      msg: `${city}Failed`,
+      msg: `${city} Failed`,
       weekly: [],
       hourly: [] 
     });

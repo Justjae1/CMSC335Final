@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import HourlyForecast from "./HourlyForecast";
 import { fetchWeather } from "./api/weather";
-
+import weatherUser from "./weatherUser.png"; 
 export default function WeatherDashboard({ user }) {
     const [weekly, setWeekly] = useState([]);
     const [selectedDay, setSelectedDay] = useState(null);
@@ -30,8 +30,11 @@ export default function WeatherDashboard({ user }) {
 
     return (
         <div className="dashboard-container">
+            <img src = {weatherUser}
+            alt = "cloudlogo" 
+            style = {{height: "250px", width: "250px", borderRadius: "50%", boxShadow:"5px 5px 15px 0px rgba(0, 0, 0, 0.3)"}}/>
             <h2 style={{ fontSize: "2.8rem" }}>Welcome, {user.name}</h2>
-            <p style={{ fontSize: "1.6rem" }}>Here's your weekly forecast for {user.location}</p>
+            <p style={{ fontSize: "1.6rem" }}>Here's your weekly forecast for <strong>{user.location}</strong></p>
 
 
             {loading ? (

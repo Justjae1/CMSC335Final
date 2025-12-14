@@ -11,7 +11,7 @@ export default function UserForm({ onSubmit }) {
 
         if (!name || !age || !location) return;
         onSubmit({
-            name, age, location: location.charAt(0).toUpperCase() + location.slice(1),
+            name: name.charAt(0).toUpperCase() + location.slice(1) , age, location: location.charAt(0).toUpperCase() + location.slice(1),
 
         });
     };

@@ -8,6 +8,12 @@
 # testing
 /coverage
 
+# environment variables
+.env
+
+# node
+node_modules/
+
 # production
 /build
 

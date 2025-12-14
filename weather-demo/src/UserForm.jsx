@@ -9,16 +9,20 @@ export default function UserForm({ onSubmit }) {
 
         e.preventDefault();
 
-        if (!name || !age || !location) return;
+        if (!name || !age || !location){
+            window.alert("Please fill the form completely to continue.");
+            return;
+        }
+
         onSubmit({
-            name: name.charAt(0).toUpperCase() + location.slice(1) , age, location: location.charAt(0).toUpperCase() + location.slice(1),
+            name: name.charAt(0).toUpperCase() + name.slice(1) , age, location: location.charAt(0).toUpperCase() + location.slice(1),
 
         });
     };
 
     return (
         <div className="form-container">
-            <h2 style={{ fontSize: "2.4rem" }}>Please enter information below</h2><br></br>
+            <h2 style={{ fontSize: "2.4rem" }}>Want to know what the weather is?<br></br>Fill out the form below to get started.</h2><br></br>
             <form onSubmit={handleSubmit}>
                 <br></br><input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} /><br></br>
                 <input type="number" placeholder="Age" onChange={(e) => setAge(e.target.value)} /><br></br>

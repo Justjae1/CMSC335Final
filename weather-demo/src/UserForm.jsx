@@ -22,7 +22,8 @@ export default function UserForm({ onSubmit }) {
 
     return (
         <div className="form-container">
-            <h2 style={{ fontSize: "2.4rem" }}>Want to know what the weather is?<br></br>Fill out the form below to get started.</h2><br></br>
+            <h2 style={{ fontSize: "2rem" }}>Want to find the weather in your city?<br></br>
+            <br></br>Fill out the form below to get started!</h2><br></br>
             <form onSubmit={handleSubmit}>
                 <br></br><input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} /><br></br>
                 <input type="number" placeholder="Age" onChange={(e) => setAge(e.target.value)} /><br></br>

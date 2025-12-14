@@ -1,20 +1,17 @@
+/*frontend fetcher :weather.js */
+
 import axios from 'axios';
 
 export const fetchWeather = async (location) => {
   try {
     const response = await axios.get(`/api/weather/${location}`);
-    const data = response.data;
-    return {
-      country: data.country,
-      weekly: data.weekly,
-      hourly: data.hourly
-    };
+    return response.data;
+
   } catch (error) {
     console.error('Weather: ', error);
     return {
       country: '',
       weekly: [],
-      hourly: []
     };
   }
 };

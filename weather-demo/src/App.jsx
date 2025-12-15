@@ -8,17 +8,23 @@ export default function App() {
     const [page, setPage] = useState("welcome");
     const [userData, setUserData] = useState(null);
 
+    // updates
+    const handleFormSubmit = (data) => {
+        setUserData(data);
+        setPage("dashboard");
+    }
+
     return (
         <>
-            {page === "welcome" && <WelcomeScreen onContinue={() => setPage("form")} />}
+            {page === "welcome" && (<WelcomeScreen onContinue={() => setPage("form")} />)}
+
             {page === "form" && (
-                <UserForm onSubmit={(data) => {
-                    setUserData(data);
-                    setPage("dashboard");
-                }}
-                />
+                <UserForm onSubmit={handleFormSubmit} />
+
             )}
-            {page === "dashboard" && <WeatherDashboard user={userData} />}
+
+            {page === "dashboard" && userData && (<WeatherDashboard user={userData} />
+            )}
 
         </>
     );

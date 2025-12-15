@@ -30,3 +30,6 @@ node server.js(run backend)
 cd into weather-demo(cd ..)
 npm start
 
+youtube link:
+https://www.youtube.com/watch?v=OcDZ8mza2q4
+

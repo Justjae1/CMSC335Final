@@ -30,6 +30,7 @@ node server.js(run backend)
 cd into weather-demo(cd ..)
 npm start
 
-youtube link:
-https://www.youtube.com/watch?v=OcDZ8mza2q4
+Youtube link: https://www.youtube.com/watch?v=OcDZ8mza2q4
+App Description: Weather Dashboard App is a full-stack web application that provides real-time, location-based weather forecasts. Users start on a welcome screen, where they enter their information into a form. After submission, the app dynamically fetches weekly and hourly weather data from an external API and displays it in a responsive, visually engaging dashboard.
+
 

@@ -1,31 +1,43 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import WelcomeScreen from "./WelcomeScreen";
 import UserForm from "./UserForm";
 import WeatherDashboard from "./WeatherDashboard";
 import "./App.css";
 
 export default function App() {
-    const [page, setPage] = useState("welcome");
-    const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
-    // updates
-    const handleFormSubmit = (data) => {
-        setUserData(data);
-        setPage("dashboard");
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<WelcomeScreenWrapper />} />
+        <Route path="/form" element={<FormPage setUserData={setUserData} />} />
+        <Route path="/weatherdashboard" element={<WeatherDashboard user={userData} />} />
+      </Routes>
+    </Router>
+  );
+}
+
+// Wrapper to handle navigation from WelcomeScreen
+function WelcomeScreenWrapper() {
+  const navigate = useNavigate();
+  return <WelcomeScreen onContinue={() => navigate("/form")} />;
+}
+
+// Form page handles submission and navigates to dashboard
+function FormPage({ setUserData }) {
+  const navigate = useNavigate();
+
+  const handleSubmit = (data) => {
+    if (!data || !data.location) {
+      alert("Please enter a city!");
+      return;
     }
 
-    return (
-        <>
-            {page === "welcome" && (<WelcomeScreen onContinue={() => setPage("form")} />)}
+    setUserData(data);              // save the user data
+    navigate("/weatherdashboard");  // navigate to dashboard
+  };
 
-            {page === "form" && (
-                <UserForm onSubmit={handleFormSubmit} />
-
-            )}
-
-            {page === "dashboard" && userData && (<WeatherDashboard user={userData} />
-            )}
-
-        </>
-    );
+  return <UserForm onSubmit={handleSubmit} />;
 }

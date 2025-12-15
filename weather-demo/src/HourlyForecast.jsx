@@ -8,8 +8,8 @@ export default function HourlyForecast({ data = [], onBack, country = "" }) {
             <div className="hour-cards-horizontal">
                 {data.map((hour, i) => {
                     const temp = countryCheck
-                        ? Math.round(hour.temp * 9 / 5 + 32)
-                        : Math.round(hour.temp);
+                        ? Math.round(Number(hour.temp_f) || Number(hour.temp_c) || 0)
+                        : Math.round(Number(hour.temp_c) || Number(hour.temp_f) || 0);
                     const unit = countryCheck ? "°F" : "°C";
 
                     return (

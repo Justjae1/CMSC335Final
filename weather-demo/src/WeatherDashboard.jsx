@@ -34,7 +34,7 @@ export default function WeatherDashboard({ user }) {
             style={{ width: "120px", height: "120px", marginBottom: "1rem" }}
             />
             <h2>Welcome {user.name}!</h2>
-            <h3>Loading your weather forecast… this may take a few seconds.</h3>
+            <h3>Loading your weather forecast…this may take a few seconds.</h3>
         </div>
     );
     }

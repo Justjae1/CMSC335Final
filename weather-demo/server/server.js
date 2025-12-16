@@ -32,9 +32,13 @@ app.use('/api/form', formRouter);
 app.use(express.static(path.join(__dirname, '../build')));
 
 /* this allows React router to navigate page */
-app.get('/weatherdashboard',(req, res) => {
+/* app.get('/weatherdashboard',(req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+}); */
+app.get('*',(req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
+
 
 
 app.listen(PORT, () => {

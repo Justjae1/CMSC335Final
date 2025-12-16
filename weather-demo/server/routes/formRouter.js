@@ -1,26 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-
-const UserWeatherSchema = new mongoose.Schema({
-  name: String,
-  age: Number,
-  location: String,
-  country: String,
-  weeklyWeather: Array,
-  createTime: { type: Date, default: Date.now }
-});
-const UserWeather = mongoose.model('UserWeather', UserWeatherSchema);
-
+const UserWeather = require('../models/UserWeather');
 
 router.post('/save', async (req, res) => {
   try {
+    console.log('Incoming:', req.body);
+
     const userWeather = new UserWeather(req.body);
     await userWeather.save();
-    res.json({ msg: 'data success' });
+
+    res.status(201).json({ msg: 'Saved successfully' });
   } catch (err) {
-    res.status(500).json({ msg: 'Error', error: err.message });
+    console.error(err);
+    res.status(500).json({ msg: 'Save failed', error: err.message });
   }
 });
 

@@ -6,23 +6,38 @@ export default function WeatherDashboard({ user }) {
     const [weeklyData, setWeeklyData] = useState([]);
     const [country, setCountry] = useState("");
     const [selectedDay, setSelectedDay] = useState(null);
+    const [loading, setLoading] = useState(false); 
 
     const countryCheck = country.toLowerCase() === "united states of america";
 
     useEffect(() => {
         if (!user || !user.location) return;
         const API_BASE = process.env.REACT_APP_API_BASE_URL;
+        setLoading(true); 
         fetch(`${API_BASE}/api/weather/${encodeURIComponent(user.location)}`)
             .then((res) => res.json())
             .then((data) => {
                 setWeeklyData(data.weekly || []);
                 setCountry(data.country || "");
             })
-            .catch((err) => console.error(err));
+            .catch((err) => console.error(err))
+            .finally(() => setLoading(false)); 
     }, [user]);
 
     if (!user) return <div>Please submit the form first.</div>;
-
+    if (loading){
+         return (
+        <div className="dashboard-container">
+            <img
+            src = {weatherUser}
+            alt = "User Weather" 
+            style={{ width: "120px", height: "120px", marginBottom: "1rem" }}
+            />
+            <h2>Welcome {user.name}!</h2>
+            <h3>Loading your weather forecast… this may take a few seconds.</h3>
+        </div>
+    );
+    }
     return (
         <div className="dashboard-container">
             <img

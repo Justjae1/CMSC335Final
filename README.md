@@ -19,6 +19,7 @@ How to run the app:
             MONGO_CONNECTION_STRING = `mongodb+srv://weatherUser:IGZAafADpHtXDvbo@cluster0.1cihhuw.mongodb.net/?appName=Cluster0`
             WEATHER_API_BASE_URL=https://api.weatherapi.com/v1
             WEATHER_API_KEY=6e011f18b2f645258ab191031250912
+            REACT_APP_API_BASE_URL=https://cmsc335final-zu5b.onrender.com/
 
             cd into weather-demo/server:
             node server.js(run backend)

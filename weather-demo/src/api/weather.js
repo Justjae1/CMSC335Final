@@ -1,9 +1,15 @@
 /*frontend fetcher :weather.js */
 
-import axios from 'axios';
-
+//import axios from 'axios';
+const API_BASE = process.env.REACT_APP_API_BASE_URL;
 export const fetchWeather = async (location) => {
-  try {
+  const url = `${API_BASE}/api/weather/${location}`;
+  const res = await fetch(url);
+  if(!res.ok){
+    return;
+  }
+  return res.json()
+  /*try {
     const response = await axios.get(`/api/weather/${location}`);
     return response.data;
 
@@ -13,5 +19,5 @@ export const fetchWeather = async (location) => {
       country: '',
       weekly: [],
     };
-  }
+  }*/
 };

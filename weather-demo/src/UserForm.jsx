@@ -20,7 +20,7 @@ export default function UserForm({ onSubmit }) {
             location: location.charAt(0).toUpperCase() + location.slice(1),
         };
         try { 
-            await fetch(`${API_BASE}/form/save`, {
+            await fetch(`${API_BASE}/api/form/save`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",  

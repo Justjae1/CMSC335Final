@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+const API_BASE = process.env.REACT_APP_API_BASE_URL;
 
 export default function UserForm({ onSubmit }) {
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [location, setLocation] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
 
         e.preventDefault();
 
@@ -13,11 +14,24 @@ export default function UserForm({ onSubmit }) {
             window.alert("Please fill the form completely to continue.");
             return;
         }
+        const user = {
+            name: name.charAt(0).toUpperCase() + name.slice(1),
+            age: Number(age),
+            location: location.charAt(0).toUpperCase() + location.slice(1),
+        };
+        try { 
+            await fetch(`${API_BASE}/api/form/save`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",  
+            }, 
+            body: JSON.stringify(user), 
+            });
+            onSubmit(user); 
+        } catch(e){
+            return;
 
-        onSubmit({
-            name: name.charAt(0).toUpperCase() + name.slice(1) , age, location: location.charAt(0).toUpperCase() + location.slice(1),
-
-        });
+        }
     };
 
     return (

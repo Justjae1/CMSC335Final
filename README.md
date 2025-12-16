@@ -6,7 +6,7 @@ Submitted by: (Insert Name)
             Youtube link: https://www.youtube.com/watch?v=OcDZ8mza2q4 
             APIs: Weather Api (https://www.weatherapi.com/)
             Contact Email:  (Insert Here)
-            Deployed App Link: (Insert Here)
+            Deployed App Link: https://cmsc335final-1-im8j.onrender.com 
 
 How to run the app: 
             git clone https://github.com/Justjae1/CMSC335Final.git 

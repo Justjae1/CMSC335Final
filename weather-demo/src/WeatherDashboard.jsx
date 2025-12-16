@@ -12,9 +12,9 @@ export default function WeatherDashboard({ user }) {
 
     useEffect(() => {
         if (!user || !user.location) return;
-         const API_BASE = process.env.REACT_APP_API_BASE_URL;
+        // const API_BASE = process.env.REACT_APP_API_BASE_URL;
         setLoading(true); 
-        fetch(`${API_BASE}/api/weather/${encodeURIComponent(user.location)}`)
+        fetch(`/api/weather/${encodeURIComponent(user.location)}`)
             .then((res) => res.json())
             .then((data) => {
                 setWeeklyData(data.weekly || []);

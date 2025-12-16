@@ -1,11 +1,11 @@
 # CMSC335Final
 
-Submitted by: (Insert Name)
-            Group Members: Jalen Henson (0201), Jinye Deng (0201), Reza Amananhu (0201)
+Submitted by: Reza Amanahu (ramanahu)
+            Group Members: Jalen Henson (jhenson1), Jinye Deng (jdeng123)
             App Description: Weather Dashboard App is a full-stack web application that provides real-time, location-based weather forecasts. Users start on a welcome screen, where they enter their information into a form. After submission, the app dynamically fetches weekly and hourly weather data from an external API and displays it in a responsive, visually engaging dashboard.
             Youtube link: https://www.youtube.com/watch?v=OcDZ8mza2q4 
             APIs: Weather Api (https://www.weatherapi.com/)
-            Contact Email:  (Insert Here)
+            Contact Email:  ramanahu@umd.edu
             Deployed App Link: https://cmsc335final-1-im8j.onrender.com 
 
 How to run the app: 

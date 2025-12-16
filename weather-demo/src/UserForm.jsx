@@ -18,14 +18,9 @@ export default function UserForm({ onSubmit }) {
             age: Number(age),
             location: location.charAt(0).toUpperCase() + location.slice(1)
         };
-<<<<<<< HEAD
-        try { 
-            await fetch(`${API_BASE}/api/form/save`, {
-=======
 
         try {
             const res = await fetch(`/api/form/save`, {
->>>>>>> e7ec9a1 (updated files)
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

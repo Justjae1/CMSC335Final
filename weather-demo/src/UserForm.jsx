@@ -25,7 +25,13 @@ export default function UserForm({ onSubmit }) {
                 headers: {
                     "Content-Type": "application/json",  
             }, 
-            body: JSON.stringify(user), 
+            body: JSON.stringify({
+                name: user.name,
+                age: Number(user.age),
+                location: user.location,
+                country: user.country || "",
+                weeklyWeather: user.weeklyWeather || [],
+            })
             });
             onSubmit(user); 
         } catch(e){
